@@ -1,6 +1,12 @@
 #cada __init__ indica um módulo
-
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
+
+
+
+
 
 # app é uma instância da classe Flask
 # essa instância recebe a var "__name__" -->  
@@ -8,6 +14,12 @@ from flask import Flask
 # Sempre dá um valor a ela que especifica o qual que é  o arquivo que se está executando (se Principal ou Secundário)
 # __name__: ver que vai controlar a aplicação inteira. todo o flask está 'contido' nela.
 app = Flask(__name__) 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db' #Aqui entra a String de conexão com o banco de dados
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+manager = Manager(app) #cuida dos comandos ao inicializar a aplicação (runserver)
+manager.add_command('db', MigrateCommand)
 
 from App.controlers import default
 
