@@ -10,9 +10,11 @@ from App import app
 @app.route("/index/<user>")
 @app.route("/", defaults={"user":None})
 def index(user): #por padrão, foi colocado o nome da pagina de index
-    return render_template('index.html', user=user) # função recebe uma arquivo .html e o renderiza # junto com o html, envia as variavel que utilizar na pagina. No caso, o Usuário
+    return render_template('base.html', user=user) # função recebe uma arquivo .html e o renderiza # junto com o html, envia as variavel que utilizar na pagina. No caso, o Usuário
     
-
+@app.route("/login")
+def login():
+    return render_template('base.html')
 
 
 
