@@ -1,19 +1,37 @@
-<html>
-<head>
-    <title> Pagina APP </title>
-    <link rel="stylesheet" href="{{ url_for('static', filename="css/bootstrap.min.css") }}"> <!-- utiliza o Bootstrap como template --> 
-</head>
-<body>
-    <h1> APP Online!!!</h1>
-    {% if user %}  <!-- jinja: para inserir lógica com python --> 
-    <p>Bem vindo ao APP Online, {{ user }}!</p>
-    {% else %}
-    <p>Bem vindo ao APP Online!</p>
-    {% endif %} <!-- como o html não é identado, tem que indicar o fim do IF-->
+{% extends 'base.html' %}
 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename="js/bootstrap.min.js") }}"></script>
+{% block title %}{{super()}} - INDEX{% endblock %} <!-- super() função que mantem o texto original e acrescenta um texto ao lado -->
+{% block content %}
 
-</body>
-</html>
+    <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Bem-vindo ao APP Online!</h1>
+      <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique tempus nisl, id vulputate tortor fringilla at. Curabitur egestas accumsan interdum. Nunc maximus euismod dui, nec ultrices est. Maecenas consectetur dolor id rutrum venenatis. Sed ipsum risus, egestas id sapien eu, malesuada ornare nibh. Etiam tincidunt neque dui. Curabitur at odio nec dolor semper pulvinar in id eros. Aliquam et lacus ipsum. Nunc ut nulla at massa gravida interdum ac non massa. Proin ultricies dui libero, a molestie quam pulvinar a. Pellentesque ut tellus vel ipsum rutrum ultricies. In gravida turpis ut posuere dapibus. Nunc et dignissim lorem.</p>
+      <button class="btn btn-primary btn-lg" type="button">Example button</button>
+    </div>
+  </div>
+
+  <div class="row align-items-md-stretch">
+    <div class="col-md-6">
+      <div class="h-100 p-5 text-white bg-dark rounded-3">
+        <h2>Change the background</h2>
+        <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+        <button class="btn btn-outline-light" type="button">Example button</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>Add borders</h2>
+        <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+        <button class="btn btn-outline-secondary" type="button">Example button</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-3 mt-4 text-muted border-top">
+    &copy; 2021
+  </footer>
+</div>
+</main>
+
+{% endblock %}
