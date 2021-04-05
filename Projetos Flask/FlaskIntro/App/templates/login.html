@@ -4,13 +4,34 @@
 <div class="col-md-4 col-md-offset-4">
 <h3>Login</h3>
 <form action="" method="POST"> <!--action escpecifica para Onde a informação será enviada. Caso fique em branco, será para o próprio local (pag. Login) -->
+    {{ form.csrf_token }} <!--Campo que torna o Formulario Válido-->
     <div class="form-group">
         <label>Usuário</label>
         {{form.username(class="form-control", placeholder="Seu usuário") }}
+
+        {% if form.errors.username %}
+        <div class="alert alert-danger" role="alert">
+            <ul>
+            {% for e in form.errors.username %} <!-- FOR para lista de erros que aparece caso usuario nao preencha campo requerido -->
+                <li>{{ e }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
     </div>
     <div class="form-group">
         <label>Password</label>
         {{form.password(class="form-control", placeholder="Sua senha")}}
+
+        {% if form.errors.password %}
+        <div class="alert alert-danger" role="alert">
+            <ul>
+            {% for e in form.errors.password %} <!-- FOR para lista de erros que aparece caso usuario nao preencha campo requerido -->
+                <li>{{ e }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
     </div>
     <div class="checkbox">
         <label>

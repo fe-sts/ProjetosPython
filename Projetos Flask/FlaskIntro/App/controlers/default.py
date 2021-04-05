@@ -12,9 +12,14 @@ from App.models.forms import LoginForm
 def index(): #por padrão, foi colocado o nome da pagina de index
     return render_template('index.html') # função recebe uma arquivo .html e o renderiza # junto com o html, envia as variavel que utilizar na pagina. No caso, o Usuário
     
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET","POST"])
 def login():
     form = LoginForm()
+    if form.validate_on_submit(): #verifica se foi validado --> validators=[DataRequired()
+        print(form.username.data)
+        print(form.password.data)
+    else:
+        print(form.errors)
     return render_template('login.html', form=form)
 
 
