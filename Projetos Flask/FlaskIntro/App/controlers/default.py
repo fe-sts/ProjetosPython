@@ -3,7 +3,7 @@
 #importa a var "app" de __init__.py
 from flask import render_template
 from App import app
-
+from App.models.forms import LoginForm
 
 # decorator --> é uma caracteristica do python. Ele entra sempre antes de uma função.
 # está aplicando o método 'route' sobre a função 'index'. Ele vai definir um rota para a página.
@@ -12,9 +12,10 @@ from App import app
 def index(): #por padrão, foi colocado o nome da pagina de index
     return render_template('index.html') # função recebe uma arquivo .html e o renderiza # junto com o html, envia as variavel que utilizar na pagina. No caso, o Usuário
     
-@app.route("/login")
+@app.route("/login", methods=["POST"])
 def login():
-    return render_template('base.html')
+    form = LoginForm()
+    return render_template('login.html', form=form)
 
 
 
