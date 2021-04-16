@@ -1,4 +1,5 @@
-from app import db
+#from app import db
+from App import db
 
 class User(db.Model):
     __table__name = "users"
@@ -20,7 +21,7 @@ class User(db.Model):
 
 
 class Post(db.Model):
-    __table__name = "posts"
+    __tablename__ = "posts"
 
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text)
@@ -31,9 +32,10 @@ class Post(db.Model):
     def __init__(self, content, user_id):
         self.content = content
         self.user_id = user_id
+
     
-    def Follow(db.Model):
-        __table__name = "follow"
+     def Follow(db.Model):
+        __tablename__ = "follow"
 
         id = db.Column(db.Integer, primary_key=True)
         user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

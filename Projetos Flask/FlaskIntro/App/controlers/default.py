@@ -2,8 +2,10 @@
 
 #importa a var "app" de __init__.py
 from flask import render_template
-from App import app
+from App import app, db
 from App.models.forms import LoginForm
+
+from App.models.tables import User
 
 # decorator --> é uma caracteristica do python. Ele entra sempre antes de uma função.
 # está aplicando o método 'route' sobre a função 'index'. Ele vai definir um rota para a página.
@@ -23,7 +25,12 @@ def login():
     return render_template('login.html', form=form)
 
 
-
+@app.route("/teste/<info>")
+@app.route("/teste", defaults={"info":None})
+def teste(info):
+    i = User("Felipe Rina", "1234", "Felipe Rinaldini Santos", "felipe@gmail.com")
+    db.session.add(i)
+    db.session.commit()
 
 
 
