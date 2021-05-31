@@ -16,12 +16,7 @@ def inserir():
         print("Ja existe este contato")
     else:
         usuarios[nome] = telefone #Para trabalhar com dicionarios, deve se usar o sistema Chave (nome), Valor(telefone)
-    ''''
-    dicionario[input("Digite o login: ").upper()] = [input("Digite o nome: ").upper(),
-                                                     input("Digite a última data de acesso: "),
-                                                     input("Última estação acessada: ").upper()]'''
-
-
+ 
 def pesquisar():
     nome = input("Digite o usuario que deseja buscar: ").upper()
     if usuarios.get(nome):
